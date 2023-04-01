@@ -17,6 +17,8 @@ coveralls = { repository = "rubik/lobster" }
 travis-ci = { repository = "rubik/lobster" }
 
 [dependencies]
+ahash = "0.8.3"
+mimalloc = { version = "*", default-features = false }
 
 [dev-dependencies]
 criterion = { version = "0.3", features = ["html_reports"] }
@@ -51,3 +53,4 @@ harness = false
 [[bench]]
 name = "quantcup"
 harness = false
+
