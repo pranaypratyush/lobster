@@ -1,13 +1,13 @@
-use ahash::AHashMap;
-use std::ops::{Index, IndexMut};
-
+// use ahash::AHashMap;
 use crate::models::LimitOrder;
-
+use fxhash::{FxBuildHasher, FxHashMap};
+use std::collections::HashMap;
+use std::ops::{Index, IndexMut};
 #[derive(Debug)]
 pub struct OrderArena {
     orders: Vec<LimitOrder>,
     free: Vec<usize>,
-    order_map: AHashMap<u128, usize>,
+    order_map: FxHashMap<u128, usize>,
 }
 
 impl OrderArena {
@@ -15,7 +15,10 @@ impl OrderArena {
         let mut list = Self {
             orders: Vec::with_capacity(capacity),
             free: Vec::with_capacity(capacity),
-            order_map: AHashMap::with_capacity(capacity),
+            order_map: HashMap::with_capacity_and_hasher(
+                capacity,
+                FxBuildHasher::default(),
+            ),
         };
 
         // Preallocate

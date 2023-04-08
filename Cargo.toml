@@ -17,7 +17,7 @@ coveralls = { repository = "rubik/lobster" }
 travis-ci = { repository = "rubik/lobster" }
 
 [dependencies]
-ahash = "0.8.3"
+fxhash = "0.2.1"
 mimalloc = { version = "*", default-features = false }
 
 [dev-dependencies]
@@ -32,7 +32,7 @@ debug-assertions = false
 incremental = false
 overflow-checks = false
 rpath = false
-lto = "thin"
+lto = "fat"
 panic = "abort"
 codegen-units = 1
 
@@ -43,7 +43,7 @@ debug-assertions = false
 incremental = false
 overflow-checks = false
 rpath = false
-lto = "thin"
+lto = "fat"
 codegen-units = 1
 
 [[bench]]
