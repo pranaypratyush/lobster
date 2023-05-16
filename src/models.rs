@@ -1,3 +1,4 @@
+use speedy::{Readable, Writable};
 /// An order book side.
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum Side {
@@ -142,7 +143,7 @@ pub struct BookLevel {
 }
 
 /// A trade that happened as part of the matching process.
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Readable, Writable)]
 pub struct Trade {
     /// The total quantity transacted as part of this trade.
     pub total_qty: u64,
@@ -155,7 +156,7 @@ pub struct Trade {
     pub last_qty: u64,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Readable, Writable)]
 pub struct LimitOrder {
     pub id: u128,
     pub qty: u64,

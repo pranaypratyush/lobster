@@ -1,9 +1,9 @@
-// use ahash::AHashMap;
 use crate::models::LimitOrder;
 use fxhash::{FxBuildHasher, FxHashMap};
+use speedy::{Readable, Writable};
 use std::collections::HashMap;
 use std::ops::{Index, IndexMut};
-#[derive(Debug)]
+#[derive(Debug, Readable, Writable)]
 pub struct OrderArena {
     orders: Vec<LimitOrder>,
     free: Vec<usize>,

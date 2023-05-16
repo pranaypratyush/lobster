@@ -1,3 +1,4 @@
+use speedy::{Endianness, Readable, Writable};
 use std::collections::BTreeMap;
 
 use crate::arena::OrderArena;
@@ -11,7 +12,7 @@ const DEFAULT_QUEUE_CAPACITY: usize = 10;
 /// An order book that executes orders serially through the [`execute`] method.
 ///
 /// [`execute`]: #method.execute
-#[derive(Debug)]
+#[derive(Debug, Readable, Writable)]
 pub struct OrderBook {
     last_trade: Option<Trade>,
     traded_volume: u64,
